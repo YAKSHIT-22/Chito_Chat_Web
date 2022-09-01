@@ -1,0 +1,424 @@
+<!--doctype html-->
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="description" content="Chito is a chat app made using Nodejs and Socket.io">
+  <meta name="keywords" content="chat, chito, app, nodejs, socket.io">
+  <meta name="author" content="YAKSHT">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chito</title>
+<!--link-stylesheet----------->
+<link rel="shortcut icon" href="img/2.png" type="image/png">
+<!--using-fontAwesome------------>
+<script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@200&display=swap" rel="stylesheet">
+</head>
+<style>
+    @charset "utf-8";
+/* CSS Document */
+*{
+   font-family: "livvic";
+}
+body{
+	margin:0px;
+	padding: 0px;
+	background-image:url("img/world.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 9999999; }
+
+.loader {
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  position: relative;
+  margin: 0 auto; }
+
+#loader-1:before, #loader-1:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 7px solid transparent;
+  border-top-color: #0066ff; }
+
+#loader-1:before {
+  z-index: 100;
+  animation: spin 2s infinite; }
+
+#loader-1:after {
+  border: 7px solid #fafafa; }
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+a{
+	text-decoration:none;
+}
+.social a{
+	padding: 20px;
+	color:#7b7c7c;
+	font-size:1.1rem;
+}
+#contact{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+	align-items: center;
+}
+.social{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #FFFFFF;
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+}
+.social a:hover{
+	color:#000000;
+	transition: all ease 0.3s;
+}
+.contact-box{
+	background-color: #151515;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px 30px;
+	box-shadow: 2px 0px 30px rgba(0,0,0,0.1);
+}
+.c-heading h1{
+	color: #e7eef3;
+	font-size: 2.5rem;
+	font-weight: lighter;
+	margin: 0px;
+	padding: 0px;
+}
+.c-heading p{
+
+	color:#cecece;
+	font-size: 0.8rem;
+	font-weight: lighter;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+.c-inputs{
+	margin: 15px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.c-inputs input{
+	width:250px;
+	height: 45px;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid rgba(251,251,251,0.1);
+	outline: none;
+	margin: 10px 0px;
+	padding: 10px;
+	box-sizing: border-box;
+	color: #f4f4f4;
+	display: flex;
+}
+.c-inputs textarea{
+	width:250px !important;
+	height: 200px !important;
+	outline: none;
+	background-color: transparent;
+	border:1px solid rgba(82,82,82,1);
+	color: #f4f4f4;
+	padding: 10px;
+	font-size: 1.2rem;
+	box-sizing: border-box;
+}
+.c-inputs button{
+	width:200px;
+	height: 40px;
+	background-color: #FFFFFF;
+	border: none;
+	outline: none;
+	margin-top: 20px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+	letter-spacing: 1px;
+	
+}
+.c-inputs input:focus{
+	border-bottom: 1px solid rgba(252,252,252,1.00);
+	transition: all ease 0.5s;
+}
+.c-inputs textarea:focus{
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,1.00);
+	transition: all ease 0.5s;
+	background-color: rgba(0,0,0,0.1);
+}
+.c-inputs button:active{
+	transform: scale(1.02);
+}
+.map{
+	filter: grayscale(0.2);
+	box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
+	border: 2px solid #FFFFFF;
+}
+@media(max-width:1100px){
+	.map{
+		display: none;
+	}
+}
+@media(max-width:450px){
+	.social{
+		display: none;
+	}
+	.contact-box{
+		width: 100%;
+		height: 100vh;
+		box-sizing: border-box;
+	}
+	#contact{
+		position: static;
+		transform: translate(0,0);
+		width:100%;
+		height: 100vh;
+		box-sizing: border-box;
+	}
+	.c-heading h1{
+		font-size: 2.2rem;
+		text-align: center;
+	}
+	
+}
+	.alert{
+  text-align: center;
+  padding:10px;
+  background:#79c879;
+  color:#fff;
+  margin-bottom:10px;
+  display:none;
+}
+ 
+</style>
+<body>
+	<div id="preloader">
+		<div class="loader" id="loader-1"></div>
+	  </div>
+    
+<!--contact-form-container------------------->
+	<section id="contact">
+	<!--socail----------->
+	<div class="social">
+	<!--icons--------->
+	<a href="index.html"><i class="fa fa-home"></i>
+	<a href="https://github.com/YAKSHIT-22"><i class="fab fa-github"></i></a>
+	<a href="https://instagram.com/yakshit.g2203"><i class="fab fa-instagram"></i></a>
+	<a href="https://www.linkedin.com/in/yakshit-garg-34a236241"><i class="fab fa-linkedin"></i></a>
+	
+		
+	</div>
+	<!--contact-box------------->
+	<div class="contact-box">
+	<!--heading---------->
+	<div class="c-heading">
+	<h1>Contact Us📞</h1>
+	<p>Call Or Email Us Regarding Question Or Issues!</p>
+	</div>
+	<!--inputs------------------>
+	<div class="c-inputs">
+	<form id="contactForm" autocomplete="off"> 
+	<input type="text" placeholder="Full Name" id="name" required onkeyup='validateName()'/>
+	<span class='error-message' id='name-error'></span>	
+	<input type="email" placeholder="Example@gmail.com" id="email" required onkeyup='validateEmail()'/>
+	<span class='error-message' id='email-error'></span>
+	<textarea name="message" placeholder="Write Message" id="message" onkeyup='validateMessage()'></textarea>
+	<span class='error-message' id='message-error'></span></br>
+	<!--sumbit-btn----------->
+	<button onclick='return validateForm()'>SEND</button>
+	<p style="color:white;font-size:.7rem;text-align:center;">Copyright &copy; 2022 Yakshit All rights reserved</p>
+	</form>
+	<div class="alert">Your message has been sent</div>
+	</div>
+		
+	</div>
+	<!--map------------------->
+	<div class="map">
+        <div style="max-width:100%;list-style:none; transition: none;overflow:hidden;width:500px;height:500px;"><div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/search?q=kaithal&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="codefor-google-map" rel="nofollow" href="https://www.embed-map.com" id="enable-mapdata">https://www.embed-map.com</a><style>#gmapcanvas img{max-height:none;max-width:none!important;background:none!important;}</style></div>
+	</div>
+	</section>
+	<script src="js/jquery-min.js"></script>
+<script>
+  (function($) {
+   "use strict";
+  $('#preloader').fadeOut();
+  }(jQuery));
+</script>
+    
+    
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+	<script>
+		function validateName() {
+
+var name = document.getElementById('name').value;
+
+if(name.length == 0) {
+
+  producePrompt('Name is required', 'name-error' , 'red')
+  return false;
+
+}
+
+if (!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+
+  producePrompt('First and last name, please.','name-error', 'red');
+  return false;
+
+}
+
+producePrompt('Valid', 'name-error', 'green');
+return true;
+
+}
+function validateEmail () {
+
+var email = document.getElementById('email').value;
+
+if(email.length == 0) {
+
+  producePrompt('Email Invalid','email-error', 'red');
+  return false;
+
+}
+
+if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+
+  producePrompt('Email Invalid', 'email-error', 'red');
+  return false;
+
+}
+
+producePrompt('Valid', 'email-error', 'green');
+return true;
+
+}
+
+function validateMessage() {
+var message = document.getElementById('message').value;
+var required = 30;
+var left = required - message.length;
+
+if (left > 0) {
+  producePrompt(left + ' more characters required','message-error','red');
+  return false;
+}
+
+producePrompt('Valid', 'message-error', 'green');
+return true;
+
+}
+function validateForm() {
+    if (!validateName() || !validateEmail() || !validateMessage()) {
+        jsShow('submit-error');
+        producePrompt('Please fix errors to submit.', 'submit-error', 'red');
+        setTimeout(function(){jsHide('submit-error');}, 2000);
+        return false;
+    }
+}
+function jsShow(id) {
+  document.getElementById(id).style.display = 'block';
+}
+
+function jsHide(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+
+
+
+function producePrompt(message, promptLocation, color) {
+
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+
+
+}
+		firebase.initializeApp( {
+			apiKey: "AIzaSyCb_A42c-IBh6zmeYATQieTUvfWRKsxp1g",
+    authDomain: "chat-app-f212e.firebaseapp.com",
+    projectId: "chat-app-f212e",
+    storageBucket: "chat-app-f212e.appspot.com",
+    messagingSenderId: "461835395324",
+    appId: "1:461835395324:web:ff79bfa1112a2b9ee77779"
+		});
+		var db = firebase.firestore();
+	    
+
+	  </script>
+	<script>
+		
+		// Listen for form submit
+		document.getElementById('contactForm').addEventListener('submit', submitForm);
+		
+		// Submit form
+		function submitForm(e){
+		  e.preventDefault();
+		
+		  // Get values
+		  var name = getInputVal('name');
+		  
+		  var email = getInputVal('email');
+		  
+		  var message = getInputVal('message');
+		  firebase.firestore().collection("contacts").add({
+					name:name,
+					email:email,
+					message:message
+				})
+		 
+		
+		  // Show alert
+		  document.querySelector('.alert').style.display = 'block';
+		
+		  // Hide alert after 3 seconds
+		  setTimeout(function(){
+			document.querySelector('.alert').style.display = 'none';
+		  },3000);
+		
+		  // Clear form
+		  document.getElementById('contactForm').reset();
+		}
+		
+		// Function to get get form values
+		function getInputVal(id){
+		  return document.getElementById(id).value;
+		}
+			</script>
+</body>
+</html>
