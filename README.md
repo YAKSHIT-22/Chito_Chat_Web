@@ -1,6 +1,6 @@
 # Chito_Chat_Web
 
-Recently, I've been working on a project to Chito_Chat_App which is a Chat Room for public use this project allows people to form a chat room for themselves andc hat with their friends or use it for some professional work.
+Recently, I've been working on a project to Chito_Chat_App which is a Chat Room for public use this project allows people to form a chat room for themselves and chat with their friends or use it for some professional work.
 
 Also I'd like to state that this is not a new idea to work on but building projects like this have been great learning experience for me .
 ## Tech Stacks
