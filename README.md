@@ -21,6 +21,8 @@ Building the projects while learning the stuff helps a lot in understanding the 
 
 [MDN](https://developer.mozilla.org/en-US/)
 
+[Git Tutorial](https://www.atlassian.com/git/tutorials)
+
 ## Prerequisites
 
 1.Clone the repo
