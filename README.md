@@ -34,5 +34,6 @@ $ git https://github.com/YAKSHIT-22/Chito_Chat_Web.git
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
 
 MADE bY [@YAKSHIT-22](https://github.com/YAKSHIT-22)
