@@ -4,6 +4,7 @@ Recently, I've been working on a project to Chito_Chat_App which is a Chat Room 
 
 Also I'd like to state that this is not a new idea to work on but building projects like this have been great learning experience for me .
 
+
 Building the projects while learning the stuff helps a lot in understanding the concepts in much depth and see their practical implementations.
 
 ## Tech Stacks
@@ -15,6 +16,10 @@ Building the projects while learning the stuff helps a lot in understanding the 
 [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 
 [Html](https://html.com/)
+
+### Additional Resources
+
+[MDN](https://developer.mozilla.org/en-US/)
 
 ## Prerequisites
 
@@ -29,5 +34,6 @@ $ git https://github.com/YAKSHIT-22/Chito_Chat_Web.git
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
 
 MADE bY [@YAKSHIT-22](https://github.com/YAKSHIT-22)
