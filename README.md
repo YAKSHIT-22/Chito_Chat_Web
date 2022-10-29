@@ -4,6 +4,9 @@ Recently, I've been working on a project to Chito_Chat_App which is a Chat Room 
 
 Also I'd like to state that this is not a new idea to work on but building projects like this have been great learning experience for me .
 
+
+Building the projects while learning the stuff helps a lot in understanding the concepts in much depth and see their practical implementations.
+
 ## Tech Stacks
 
 [VSCode](https://code.visualstudio.com/)
